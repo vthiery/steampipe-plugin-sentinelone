@@ -249,11 +249,23 @@ func Connect(_ context.Context, d *plugin.QueryData) (*SentinelOneClient, error)
 		BaseURL:  tenant,
 		APIToken: token,
 		HTTPClient: &http.Client{
-			Timeout:   30 * time.Second,
+			Timeout:   requestTimeout(cfg),
 			Transport: &authTransport{underlying: http.DefaultTransport, token: token},
 		},
 	}
 
 	d.ConnectionManager.Cache.Set(cacheKey, client)
 	return client, nil
+}
+
+// requestTimeout returns the configured HTTP timeout, defaulting to 30s.
+func requestTimeout(cfg sentineloneConfig) time.Duration {
+	const defaultTimeout = 30 * time.Second
+	if cfg.RequestTimeout == nil {
+		return defaultTimeout
+	}
+	if *cfg.RequestTimeout <= 0 {
+		return defaultTimeout
+	}
+	return time.Duration(*cfg.RequestTimeout) * time.Second
 }

@@ -12,4 +12,9 @@ connection "sentinelone" {
   # HTTP request timeout in seconds for each SentinelOne API call.
   # Increase this if queries time out on large tenants. Default: 30.
   # request_timeout = 30
+
+  # Number of items requested per API page. Defaults to the API maximum
+  # of 1000. Lower this if large pages time out or return 502 on your
+  # tenant.
+  # page_size = 1000
 }

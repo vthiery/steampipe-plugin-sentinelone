@@ -153,6 +153,8 @@ func (t *SentinelOneClient) fetchPaginatedData(
 		cursor         string
 	)
 
+	limitPerPage = pageSize(GetConfig(d.Connection), limitPerPage)
+
 	var totalLimit int
 	if d.QueryContext.Limit != nil {
 		totalLimit = int(*d.QueryContext.Limit)
@@ -268,4 +270,22 @@ func requestTimeout(cfg sentineloneConfig) time.Duration {
 		return defaultTimeout
 	}
 	return time.Duration(*cfg.RequestTimeout) * time.Second
+}
+
+// pageSize returns the configured per-page item count, falling back to the
+// table's own default. Values are clamped to the API maximum of 1000.
+//
+// The documented maximum is not always the usable maximum: some tenants'
+// backends return 502 or stall on large pages for busier endpoints (observed
+// on /agents at limit>=400), so a tenant that cannot serve 1000 needs to be
+// able to dial this down without a plugin rebuild.
+func pageSize(cfg sentineloneConfig, fallback int) int {
+	const maxPageSize = 1000
+	if cfg.PageSize == nil || *cfg.PageSize <= 0 {
+		return fallback
+	}
+	if *cfg.PageSize > maxPageSize {
+		return maxPageSize
+	}
+	return *cfg.PageSize
 }

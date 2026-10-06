@@ -8,6 +8,7 @@ type sentineloneConfig struct {
 	ClientID       *string `hcl:"client_id"`
 	APIToken       *string `hcl:"api_token"`
 	RequestTimeout *int    `hcl:"request_timeout"`
+	PageSize       *int    `hcl:"page_size"`
 }
 
 func ConfigInstance() interface{} {

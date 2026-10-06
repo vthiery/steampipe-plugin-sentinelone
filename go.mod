@@ -1,4 +1,4 @@
-module github.com/xybytes/steampipe-plugin-sentinelone
+module github.com/vthiery/steampipe-plugin-sentinelone
 
 go 1.24.0
 

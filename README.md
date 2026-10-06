@@ -4,10 +4,10 @@
 
 Use SQL to query SentinelOne configuration and more from SentinelOne.
 
-- **[Get started →](https://hub.steampipe.io/plugins/xybytes/sentinelone)**
-- Documentation: [Table definitions & examples](https://hub.steampipe.io/plugins/xybytes/sentinelone/tables)
+- **[Get started →](https://github.com/vthiery/steampipe-plugin-sentinelone)**
+- Documentation: [Table definitions & examples](https://github.com/vthiery/steampipe-plugin-sentinelone/tree/main/docs/tables)
 - Community: [Join #steampipe on Slack →](https://turbot.com/community/join)
-- Get involved: [Issues](https://github.com/xybytes/steampipe-plugin-sentinelone/issues)
+- Get involved: [Issues](https://github.com/vthiery/steampipe-plugin-sentinelone/issues)
 
 
 ## Quick Start
@@ -15,7 +15,7 @@ Use SQL to query SentinelOne configuration and more from SentinelOne.
 Install the plugin with [Steampipe](https://steampipe.io):
 
 ```shell
-steampipe plugin install xybytes/sentinelone
+steampipe plugin install ghcr.io/vthiery/sentinelone
 ```
 
 Run a query:
@@ -81,4 +81,4 @@ This repository is published under the [Apache 2.0](https://www.apache.org/licen
 Want to help but don't know where to start? Pick up one of the `help wanted` issues:
 
 - [Steampipe](https://github.com/turbot/steampipe/labels/help%20wanted)
-- [SentinelOne Plugin](https://github.com/xybytes/steampipe-plugin-sentinelone/issues)
+- [SentinelOne Plugin](https://github.com/vthiery/steampipe-plugin-sentinelone/issues)

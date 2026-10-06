@@ -21,7 +21,7 @@ select
   account_id,
   computer_name,
   agent_version,
-  os_name,
+  os_name
 from
   sentinelone_agent;
 ```
@@ -31,7 +31,7 @@ select
   account_id,
   computer_name,
   agent_version,
-  os_name,
+  os_name
 from
   sentinelone_agent;
 ```

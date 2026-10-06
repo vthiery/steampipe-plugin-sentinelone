@@ -78,7 +78,7 @@ select
   incident_status,
   created_at
 from
-  sentinelone_alerts
+  sentinelone_alert
 where
   incident_status = 'open'
   and created_at >= (current_timestamp - interval '4 days')
@@ -94,7 +94,7 @@ select
   incident_status,
   created_at
 from
-  sentinelone_alerts
+  sentinelone_alert
 where
   incident_status = 'open'
   and created_at >= datetime('now', '-4 days')
